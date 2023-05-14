@@ -19,3 +19,15 @@ VALUES ("CEO", 1000000, 5),
        ("Marketing Lead", 90000, 2),
        ("HR partner", 90000, 1);
        
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("Bob", "Jones", 1, NULL),
+       ("Christopher", "Hutchins", 2, 1),
+       ("James", "Smith", 3, 1),
+       ("Michael", "Brown", 4, 1),
+       ("Sam", "King", 5, 1),
+       ("Kate", "Conway", 6, 1),
+       ("Kristen", "Shultz", 7, 5),
+       ("Victor", "Juarez", 8, 4),
+       ("Jesse", "Pinkman", 9, 3),
+       ("Walter", "White", 10, 2);
+       
