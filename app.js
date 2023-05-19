@@ -14,6 +14,10 @@ function mainMenu() {
                     value: "view_departments"
                 },
                 {
+                    name: "view all roles",
+                    value: "view_roles"
+                },
+                {
                     name: "view all employees",
                     value: "view_employees"
                 },
@@ -31,6 +35,10 @@ function mainMenu() {
         switch(userChoice) {
             case "view_departments": 
             viewAllDepartments();
+            break;
+
+            case "view_roles": 
+            viewAllRoles();
             break;
 
             case "view_employees": 
@@ -57,6 +65,15 @@ function quit() {
         })
         .then(() => mainMenu());
  }
+
+ function viewAllRoles() {
+    db.getAllRolesFromDb()
+    .then(([Roles]) => {
+        console.log("\n");
+        console.table(Roles);
+    })
+    .then(() => mainMenu());
+}
 
  function viewAllEmployees() {
     db.getAllEmployeesFromDb()
