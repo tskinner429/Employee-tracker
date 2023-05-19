@@ -14,6 +14,10 @@ function mainMenu() {
                     value: "view_departments"
                 },
                 {
+                    name: "view all employees",
+                    value: "view_employees"
+                },
+                {
                     name: "quit",
                     value: "quit"
                 },
@@ -27,6 +31,10 @@ function mainMenu() {
         switch(userChoice) {
             case "view_departments": 
             viewAllDepartments();
+            break;
+
+            case "view_employees": 
+            viewAllEmployees();
             break;
 
             default:
@@ -50,5 +58,13 @@ function quit() {
         .then(() => mainMenu());
  }
 
+ function viewAllEmployees() {
+    db.getAllEmployeesFromDb()
+    .then(([employees]) => {
+        console.log("\n");
+        console.table(employees);
+    })
+    .then(() => mainMenu());
+}
  mainMenu();
 
