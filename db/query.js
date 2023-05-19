@@ -20,11 +20,15 @@ class DBAccess {
       getAllRolesFromDb() {
         return this.connection.promise().query(
           "SELECT role.id, role.title, department.name AS Department_name, role.salary From role left join department on role.department_id = department.id;"
-          
         );
       }
+      
+      createNewDepartmentInDb(department) {
+        return this.connection.promise().query("INSERT INTO department SET ?", department);
+      }
+};
 
-};  
+
 
 module.exports = new DBAccess(connection);
 
