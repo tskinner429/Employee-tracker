@@ -11,7 +11,13 @@ class DBAccess {
         );
       }
     
+      getAllDepartmentsFromDb() {
+        return this.connection.promise().query(
+          "SELECT department.id, department.name From department;"
+        );
+      }
+
 };  
 
-module.exports = new DB(connection);
+module.exports = new DBAccess(connection);
 
