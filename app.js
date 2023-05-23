@@ -14,6 +14,10 @@ function mainMenu() {
                     value: "view_departments"
                 },
                 {
+                    name: "create department",
+                    value: "create_department"
+                },
+                {
                     name: "view all roles",
                     value: "view_roles"
                 },
@@ -35,6 +39,10 @@ function mainMenu() {
         switch(userChoice) {
             case "view_departments": 
             viewAllDepartments();
+            break;
+
+            case "create_department": 
+            createDepartment();
             break;
 
             case "view_roles": 
@@ -65,6 +73,22 @@ function quit() {
         })
         .then(() => mainMenu());
  }
+
+ function createDepartment() {
+    inquirer.prompt([
+      {
+        name: "name",
+        message: "give the name of the department that you want to create"
+      }
+    ])
+      .then(res => {
+        let name = res;
+        db.createNewDepartmentInDb(name)
+          .then(() => console.log(`Added ${name.name} to the database`))
+          .then(() => mainMenu())
+      })
+  }
+  
 
  function viewAllRoles() {
     db.getAllRolesFromDb()
